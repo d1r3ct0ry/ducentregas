@@ -72,13 +72,13 @@
             const cepDestino = document.getElementById('cep_destino').value;
             const distanciaKm = calcularDistancia(cepPartida, cepDestino);
             const custoEntrega = distanciaKm * 1.30;
-            document.getElementById('resultado').innerText = `O valor de entrega È de R$${custoEntrega.toFixed(2)}.`;
+            document.getElementById('resultado').innerText = `O valor de entrega √© de R$${custoEntrega.toFixed(2)}.`;
         }
 
         function calcularDistancia(cepPartida, cepDestino) {
-            // Aqui vocÍ pode implementar a lÛgica para calcular a dist‚ncia entre os CEPs
-            // Por questıes de seguranÁa, È recomend·vel usar uma API no backend para fazer isso
-            // PorÈm, por simplicidade neste exemplo, irei apenas retornar um valor fixo de 100 km
+            // Aqui voc√™ pode implementar a l√≥gica para calcular a dist√¢ncia entre os CEPs
+            // Por quest√µes de seguran√ßa, √© recomend√°vel usar uma API no backend para fazer isso
+            // Por√©m, por simplicidade neste exemplo, irei apenas retornar um valor fixo de 100 km
             return 100;
         }
     </script>
