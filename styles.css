@@ -1,0 +1,80 @@
+body {
+
+font-family: Arial, sans-serif;
+background-color: #ff6600;
+margin: 0;
+padding: 0;
+}
+
+.container {
+max-width: 600px;
+margin: 50px auto;
+background-color: #fff;
+border-radius: 8px;
+padding: 20px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+color: #4a4a4a;
+margin-bottom: 20px;
+}
+
+.logo {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.image img {
+width: 300px;
+max-width: 100%;
+margin-top: 0px;
+margin-left: 500px;
+}
+
+.logo img {
+width: 200px;
+max-width: 100%;
+margin-top: 30px;
+}
+
+input[type="text"] {
+width: calc(100% - 20px);
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+input[type="button"] {
+width: 100%;
+padding: 10px 20px;
+background-color: #0056b3;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+margin-bottom: 10px;
+}
+
+input[type="button"]:hover {
+background-color: #007bff;
+}
+
+#resultado {
+margin-top: 20px;
+font-weight: bold;
+}
+
+/* Estilos para telas menores */
+@media screen and (max-width: 600px) {
+.container {
+    max-width: 90%;
+    margin: 20px auto;
+}
+.logo img {
+    width: 150px;
+}
+}

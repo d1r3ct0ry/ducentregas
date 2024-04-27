@@ -1,75 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Custo de Entrega</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ff6600;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #4a4a4a;
-            margin-bottom: 20px;
-        }
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .logo img {
-            width: 200px;
-            max-width: 100%;
-            margin-top: 30px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type="button"] {
-            width: 100%;
-            padding: 10px 20px;
-            background-color: #0056b3;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        input[type="button"]:hover {
-            background-color: #007bff;
-        }
-        #resultado {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        /* Estilos para telas menores */
-        @media screen and (max-width: 600px) {
-            .container {
-                max-width: 90%;
-                margin: 20px auto;
-            }
-            .logo img {
-                width: 150px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Vincula o arquivo CSS externo -->
 </head>
 <body>
     <div class="logo">
@@ -77,36 +13,47 @@
     </div>
     <div class="container">
         <h2>Calcule seu Frete</h2>
-        <input type="text" id="cep_endereco" placeholder="Digite endereÃ§o completo">
-        <input type="button" value="Calcular Frete" onclick="obterCoordenadas()">
+        <input type="text" id="destino" placeholder="Digite o endereço de envio">
+        <input type="button" value="Calcular Frete" onclick="obterDistancia()">
         <p id="resultado"></p>
-    </div>
 
+        <!-- Botão para enviar mensagem para o WhatsApp -->
+        <a id="whatsappLink" href="#" target="_blank">
+            <input type="button" value="Enviar mensagem via WhatsApp">
+        </a>
+    </div>
+    <div class="image">
+        <img src="assets/motoboy.png" alt="Duclog Logo">
+    </div>
     <script>
-        function obterCoordenadas() {
-            const endereco = document.getElementById('cep_endereco').value;
-            fetch('http://127.0.0.1:5000/api/obter_coordenadas', { // Endpoint ajustado
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({endereco: endereco})
-            })
+        function obterDistancia() {
+            const endereco = document.getElementById('endereco').value;
+            const destino = document.getElementById('destino').value;
+            const origem = "Rio de Janeiro, Duque de Caxias, Feirão das Malhas";
+            const apiUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(origem)}&destinations=${encodeURIComponent(destino)}&key=SUA_CHAVE_DA_API`;
+            fetch(apiUrl)
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error('Erro ao obter coordenadas.');
+                    throw new Error('Erro ao obter distância.');
                 }
             })
             .then(data => {
-                const distanciaKm = data.distancia;
-                const custoEntrega = distanciaKm * 1.30; // Custo por km
-                document.getElementById('resultado').innerText = `Latitude: ${data.latitude}, Longitude: ${data.longitude}, DistÃ¢ncia: ${distanciaKm} km, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
+                const distanciaTexto = data.rows[0].elements[0].distance.text;
+                const distanciaKm = parseFloat(distanciaTexto.replace(" km", ""));
+                const custoEntrega = distanciaKm * 1.30;
+
+                document.getElementById('resultado').innerText = `Distância: ${distanciaTexto}, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
+
+                const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${endereco}. Com o valor do frete de R$${custoEntrega.toFixed(2)}`;
+
+                const linkWhatsapp = document.getElementById('whatsappLink');
+                linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             })
             .catch(error => {
                 console.error('Erro:', error);
-                document.getElementById('resultado').innerText = 'Erro ao obter coordenadas.';
+                document.getElementById('resultado').innerText = 'Erro ao obter distância.';
             });
         }
     </script>
