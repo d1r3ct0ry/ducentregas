@@ -11,7 +11,7 @@
             padding: 0;
         }
         .container {
-            max-width: 400px;
+            max-width: 600px; /* Ajuste o tamanho máximo para 600px */
             margin: 50px auto;
             background-color: #fff;
             border-radius: 8px;
@@ -56,11 +56,14 @@
             font-weight: bold;
         }
 
-        /* Estilos para telas menores (máximo de 600px de largura) */
+        /* Estilos para telas menores */
         @media screen and (max-width: 600px) {
             .container {
-                width: 90%; /* Define a largura da caixa principal */
-                margin: 20px auto; /* Ajusta a margem */
+                max-width: 90%; /* Ajuste para 90% da largura da tela */
+                margin: 20px auto; /* Ajuste a margem */
+            }
+            .logo img {
+                width: 150px; /* Reduz o tamanho da logo */
             }
         }
     </style>
