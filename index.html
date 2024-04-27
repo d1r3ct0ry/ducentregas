@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Custo de Entrega</title>
     <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Vincula o arquivo CSS externo -->
@@ -12,11 +13,11 @@
     </div>
     <div class="container">
         <h2>Calcule seu Frete</h2>
-        <input type="text" id="destino" placeholder="Digite o endereço de envio">
+        <input type="text" id="destino" placeholder="Digite o endereÃ§o de envio">
         <input type="button" value="Calcular Frete" onclick="obterDistancia()">
         <p id="resultado"></p>
 
-        <!-- Botão para enviar mensagem para o WhatsApp -->
+        <!-- BotÃ£o para enviar mensagem para o WhatsApp -->
         <a id="whatsappLink" href="#" target="_blank">
             <input type="button" value="Enviar mensagem via WhatsApp">
         </a>
@@ -41,7 +42,7 @@
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error('Erro ao obter distância.');
+                    throw new Error('Erro ao obter distÃ¢ncia.');
                 }
             })
             .then(data => {
@@ -51,16 +52,16 @@
     
                 const custoEntrega = distanciaKm * 1.30;
     
-                document.getElementById('resultado').innerText = `Distância: ${distanciaKm.toFixed(2)} km, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
+                document.getElementById('resultado').innerText = `DistÃ¢ncia: ${distanciaKm.toFixed(2)} km, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
     
-                const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${destino}. Com o valor do frete de R$${custoEntrega.toFixed(2)}`;
+                const mensagem = `OlÃ¡, Gostaria de realizar o envio para o endereÃ§o: ${destino}. Com o valor do frete de R$${custoEntrega.toFixed(2)}`;
     
                 const linkWhatsapp = document.getElementById('whatsappLink');
                 linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             })
             .catch(error => {
                 console.error('Erro:', error);
-                document.getElementById('resultado').innerText = 'Erro ao obter distância.';
+                document.getElementById('resultado').innerText = 'Erro ao obter distÃ¢ncia.';
             });
         }
     </script>
