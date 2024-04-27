@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Calculadora de Custo de Entrega</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff6600;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4a4a4a; /* Cinza escuro */
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 200px; /* Tamanho da logo */
+            margin-top: 30px;
+            margin-bottom: 0px;
+            margin-left: 33%;
+        }
+        input[type="text"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            width: calc(100% - 40px);
+            padding: 10px 20px;
+            background-color: #0056b3; /* Azul escuro */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="button"]:hover {
+            background-color: #007bff; /* Azul mais claro */
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="assets/logo.png" alt="Duclog Logo">
+    </div>
+    <div class="container">
+        <h2>Calcule seu Frete</h2>
+        <input type="text" id="cep_destino" placeholder="Digite o CEP de destino">
+        <input type="button" value="Calcular" onclick="calcularCusto()">
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularCusto() {
+            const cepPartida = '25065007'; // CEP de partida fixo
+            const cepDestino = document.getElementById('cep_destino').value;
+            const distanciaKm = calcularDistancia(cepPartida, cepDestino);
+            const custoEntrega = distanciaKm * 1.30;
+            document.getElementById('resultado').innerText = `O valor de entrega é de R$${custoEntrega.toFixed(2)}.`;
+        }
+
+        function calcularDistancia(cepPartida, cepDestino) {
+            // Aqui você pode implementar a lógica para calcular a distância entre os CEPs
+            // Por questões de segurança, é recomendável usar uma API no backend para fazer isso
+            // Porém, por simplicidade neste exemplo, irei apenas retornar um valor fixo de 100 km
+            return 100;
+        }
+    </script>
+</body>
+</html>
