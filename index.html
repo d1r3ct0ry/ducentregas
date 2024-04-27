@@ -26,7 +26,9 @@
             width: 200px; /* Tamanho da logo */
             margin-top: 30px;
             margin-bottom: 0px;
-            margin-left: 33%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block; /* Centraliza a logo */
         }
         input[type="text"] {
             width: calc(100% - 40px);
@@ -52,6 +54,14 @@
         #resultado {
             margin-top: 20px;
             font-weight: bold;
+        }
+
+        /* Estilos para telas menores (máximo de 600px de largura) */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%; /* Define a largura da caixa principal */
+                margin: 20px auto; /* Ajusta a margem */
+            }
         }
     </style>
 </head>
