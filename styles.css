@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     background-image: url('assets/background.jpeg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
     background-position: center; /* Centraliza a imagem na tela */
+    background-repeat: no-repeat; /* Impede que a imagem de fundo se repita */
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
