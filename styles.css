@@ -1,130 +1,134 @@
-body {
 
-font-family: Arial, sans-serif;
-background-color: #ff6600;
-margin: 0;
-padding: 0;
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('assets/background.jpeg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem na tela */
+    margin: 0;
+    padding: 0;
+}
+
+
+.flex-container {
+    display: flex;
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: flex-start; /* Alinha os elementos ao topo */
 }
 
 .container {
-max-width: 600px;
-margin: 50px auto;
-background-color: #fff;
-border-radius: 8px;
-padding: 20px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Redimensiona o container para ocupar 80% da largura da tela */
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Alinha o contêiner no centro da tela */
 }
 
+
 h2 {
-color: #4a4a4a;
-margin-bottom: 20px;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto */
 }
 
 .logo {
-text-align: center;
-margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.image img {
-width: 300px;
-max-width: 100%;
-margin-top: 0px;
-margin-left: 500px;
+.nova {
+    margin-left: 20px; /* Espaçamento entre o container e a imagem */
+}
+
+.nova img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura da sua div pai */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços em branco extras em torno da imagem */
+    border-radius: 8px; /* Adiciona borda arredondada à imagem */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sutil sombra à imagem */
 }
 
 .logo img {
-width: 200px;
-max-width: 100%;
-margin-top: 30px;
+    width: 200px; /* Reduz um pouco o tamanho do logo */
+    max-width: 100%;
+    margin-top: 120px; /* Ajusta o espaçamento superior */
 }
 
 input[type="text"] {
-width: calc(100% - 20px);
-padding: 10px;
-margin-bottom: 20px;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+    width: 100%; /* Garante que o campo de texto ocupe toda a largura disponível */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 input[type="button"] {
-width: 100%;
-padding: 10px 20px;
-background-color: #0056b3;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s;
-margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 input[type="button"]:hover {
-background-color: #007bff;
+    background-color: #007bff;
 }
 
 #resultado {
-margin-top: 20px;
-font-weight: bold;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center; /* Centraliza o texto */
 }
 
 /* Estilos para telas menores */
 @media screen and (max-width: 600px) {
-.container {
-    max-width: 90%;
-    margin: 20px auto;
-}
-.logo img {
-    width: 150px;
-}
+    .container {
+        width: 90%; /* Redimensiona o container para ocupar 90% da largura da tela em telas menores */
+        margin: 20px auto;
+    }
+    .logo img {
+        width: 200px; /* Reduz um pouco mais o tamanho do logo em telas menores */
+    }
 }
 
+.green-button {
+    background-color: rgb(37, 211, 102);;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
 
-  
-  .loader {
-    width: 60px;
+  .blue-button {
+    background-color: rgb(4, 26, 50);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
   }
   
-  .loader-wheel {
-    animation: spin 1s infinite linear;
-    border: 2px solid rgba(30, 30, 30, 0.5);
-    border-left: 4px solid #fff;
-    border-radius: 50%;
-    height: 50px;
-    margin-bottom: 10px;
-    width: 50px;
+  .green-button:hover {
+    background-color: darkgreen;
   }
-  
-  .loader-text {
-    color: #fff;
-    font-family: arial, sans-serif;
+
+  .whatsapp-icon {
+    width: 20px; /* Largura da imagem */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
   }
-  
-  .loader-text:after {
-    content: 'Loading';
-    animation: load 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes load {
-    0% {
-      content: 'Loading';
-    }
-    33% {
-      content: 'Loading.';
-    }
-    67% {
-      content: 'Loading..';
-    }
-    100% {
-      content: 'Loading...';
-    }
+
+  .calc-icon {
+    width: 20px; /* Largura da imagem */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
   }
