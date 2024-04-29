@@ -14,13 +14,13 @@
     <div class="flex-container">
         <div class="container">
             <h2>Calcule seu Frete!</h2>
-            <input type="text" id="destino" placeholder="Digite o endereÃ§o de envio">
+            <input type="text" id="destino" placeholder="Digite o endereço de envio">
                 <button class="blue-button" onclick="obterDistancia()">
                   <img src="assets/calculadora.png" class="calc-icon">
                   Calcular Frete
                 </button>
             <p id="resultado"></p>
-            <!-- BotÃ£o para enviar mensagem para o WhatsApp -->
+            <!-- Botão para enviar mensagem para o WhatsApp -->
             <a id="whatsappLink" href="#" target="_blank">
                 <button class="green-button">
                   <img src="assets/whatsapp.png" class="whatsapp-icon">
@@ -48,7 +48,7 @@
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error('Erro ao obter distÃ¢ncia.');
+                    throw new Error('Erro ao obter distância.');
                 }
             })
             .then(data => {
@@ -58,16 +58,16 @@
     
                 const custoEntrega = distanciaKm * 1.30;
     
-                document.getElementById('resultado').innerText = `DistÃ¢ncia: ${distanciaKm.toFixed(2)} km, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
+                document.getElementById('resultado').innerText = `Distância: ${distanciaKm.toFixed(2)} km, Valor de entrega: R$${custoEntrega.toFixed(2)}`;
     
-                const mensagem = `OlÃ¡, Gostaria de realizar o envio para o endereÃ§o: ${destino}. Com o valor do frete de R$${custoEntrega.toFixed(2)}`;
+                const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${destino}. Com o valor do frete de R$${custoEntrega.toFixed(2)}`;
     
                 const linkWhatsapp = document.getElementById('whatsappLink');
                 linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             })
             .catch(error => {
                 console.error('Erro:', error);
-                document.getElementById('resultado').innerText = 'Erro ao obter distÃ¢ncia.';
+                document.getElementById('resultado').innerText = 'Erro ao obter distância.';
             });
         }
     </script>
