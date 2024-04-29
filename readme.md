@@ -29,7 +29,7 @@ No installation is required as this is a web-based application.
 
 ## Credits
 
-This project was created by [Your Name]. 
+This project was created by Fernando Nitsche
 
 ## License
 
