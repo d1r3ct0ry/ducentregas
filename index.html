@@ -50,7 +50,7 @@
                 // Verifica se há resultados
                 if (data.status === 'OK') {
                     const distance = data.rows[0].elements[0].distance.value / 1000; // Obtém a distância em quilômetros
-                    const cost = distance * 1.3; // Calcula o custo baseado na distância (multiplica por 1.3 a cada km)
+                    const cost = distance * 1.4; // Calcula o custo baseado na distância (multiplica por 1.3 a cada km)
                     document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distância e o custo
                 } else {
                     throw new Error('Nenhum resultado encontrado.');
