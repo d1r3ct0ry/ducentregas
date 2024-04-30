@@ -36,7 +36,7 @@
             try {
                 destino = document.getElementById('destino').value; // Atualizando o valor de destino globalmente
                 const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
-                const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ";
+                const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Substitua pelo seu próprio API key
 
                 const url = `https://maps.googleapis.com/maps/api/distancematrix/json?&destinations=${encodeURIComponent(destino)}&origins=${encodeURIComponent(partida)}&units=metric&key=${apiKey}`;
                 
@@ -45,8 +45,20 @@
                 if (!response.ok) {
                     throw new Error('Erro ao obter distância.');
                 }
+
+                const data = await response.json();
+                
+                // Verifica se há resultados
+                if (data.status === 'OK') {
+                    const distance = data.rows[0].elements[0].distance.value / 1000; // Obtém a distância em quilômetros
+                    const cost = distance * 1.3; // Calcula o custo baseado na distância (multiplica por 1.3 a cada km)
+                    document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distância e o custo
+                } else {
+                    throw new Error('Nenhum resultado encontrado.');
+                }
             } catch (error) {
                 console.error(error);
+                document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
             } finally {
                 destino = ''; // Limpa a variável destino
             }
