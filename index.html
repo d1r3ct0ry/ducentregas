@@ -32,33 +32,31 @@
     <script>
         let destino = ''; // Definindo a variável destino globalmente
 
-        function obterDistancia() {
-            destino = document.getElementById('destino').value; // Atualizando o valor de destino globalmente
-            const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
+        async function obterDistancia() {
+            try {
+                destino = document.getElementById('destino').value; // Atualizando o valor de destino globalmente
+                const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
+                const apiKey = "Sua_chave_de_API_do_Google_Maps";
 
-            const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Sua chave de API do Google Maps
-
-            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?&destinations=${encodeURIComponent(destino)}&origins=${encodeURIComponent(partida)}&units=metric&key=${apiKey}`;
-
-            fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
+                const url = `https://maps.googleapis.com/maps/api/distancematrix/json?&destinations=${encodeURIComponent(destino)}&origins=${encodeURIComponent(partida)}&units=metric&key=${apiKey}`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
                     throw new Error('Erro ao obter distância.');
                 }
-            })
-            .then(data => {
+
+                const data = await response.json();
                 console.log(data); // Imprimir o JSON retornado pela API no console
+
                 const distanciaText = data.rows[0].elements[0].distance.text;
                 const distanciaValue = data.rows[0].elements[0].distance.value;
 
                 calcularCustoEntrega(distanciaText, distanciaValue);
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Erro:', error);
                 document.getElementById('resultado').innerText = 'Erro ao montar mensagem.';
-            });
+            }
         }
 
         function calcularCustoEntrega(distanciaText, distanciaValue) {
