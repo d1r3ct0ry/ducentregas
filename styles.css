@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('assets/background.jpeg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+    background-image: url('assets/backgsround.jpeg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
     background-position: left; /* Centraliza a imagem na tela */
     background-repeat: no-repeat; /* Impede que a imagem de fundo se repita */
     background-position: 100%;    
@@ -23,7 +23,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: auto; /* Alinha o contêiner no centro da tela */
+    margin: auto; /* Alinha o contÃªiner no centro da tela */
 }
 
 
@@ -39,25 +39,25 @@ h2 {
 }
 
 .nova {
-    margin-left: 20px; /* Espaçamento entre o container e a imagem */
+    margin-left: 20px; /* EspaÃ§amento entre o container e a imagem */
 }
 
 .nova img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse a largura da sua div pai */
-    height: auto; /* Mantém a proporção da imagem */
-    display: block; /* Remove espaços em branco extras em torno da imagem */
-    border-radius: 8px; /* Adiciona borda arredondada à imagem */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sutil sombra à imagem */
+    max-width: 100%; /* Garante que a imagem nÃ£o ultrapasse a largura da sua div pai */
+    height: auto; /* MantÃ©m a proporÃ§Ã£o da imagem */
+    display: block; /* Remove espaÃ§os em branco extras em torno da imagem */
+    border-radius: 8px; /* Adiciona borda arredondada Ã  imagem */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sutil sombra Ã  imagem */
 }
 
 .logo img {
     width: 200px; /* Reduz um pouco o tamanho do logo */
     max-width: 100%;
-    margin-top: 120px; /* Ajusta o espaçamento superior */
+    margin-top: 120px; /* Ajusta o espaÃ§amento superior */
 }
 
 input[type="text"] {
-    width: 100%; /* Garante que o campo de texto ocupe toda a largura disponível */
+    width: 100%; /* Garante que o campo de texto ocupe toda a largura disponÃ­vel */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -99,7 +99,7 @@ input[type="button"]:hover {
     body {
         background-image: url('assets/background.jpeg');
         background-position: left;
-         /* Imagem de fundo para dispositivos móveis */
+         /* Imagem de fundo para dispositivos mÃ³veis */
     }
 }
 
@@ -131,10 +131,10 @@ input[type="button"]:hover {
 
   .whatsapp-icon {
     width: 20px; /* Largura da imagem */
-    margin-right: 10px; /* Espaçamento à direita da imagem */
+    margin-right: 10px; /* EspaÃ§amento Ã  direita da imagem */
   }
 
   .calc-icon {
     width: 20px; /* Largura da imagem */
-    margin-right: 10px; /* Espaçamento à direita da imagem */
+    margin-right: 10px; /* EspaÃ§amento Ã  direita da imagem */
   }
