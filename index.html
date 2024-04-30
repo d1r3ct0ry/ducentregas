@@ -30,8 +30,10 @@
         </div>
     </div>
     <script>
+        let destino = ''; // Definindo a variável destino globalmente
+
         function obterDistancia() {
-            const destino = document.getElementById('destino').value;
+            destino = document.getElementById('destino').value; // Atualizando o valor de destino globalmente
             const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
 
             const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Sua chave de API do Google Maps
