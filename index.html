@@ -34,35 +34,42 @@
             const autocomplete = new google.maps.places.Autocomplete(input);
         }
 
-        async function obterDistancia() {
-            try {
-                const destino = document.getElementById('destino').value;
-                const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
-                
-                if (!response.ok) {
-                    throw new Error('Erro ao obter distância.');
-                }
-
-                const data = await response.json();
-                
-                // Verifica se há resultados
-                if (data.status === 'OK') {
-                    const distance = data.rows[0].elements[0].distance.value / 1000; // Obtém a distância em quilômetros
-                    const cost = distance * 1.4; // Calcula o custo baseado na distância (multiplica por 1.3 a cada km)
-                    document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distância e o custo
-                } else {
-                    throw new Error('Nenhum resultado encontrado.');
-                }
-            } catch (error) {
-                console.error(error);
-                document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
-            }
+async function obterDistancia() {
+    try {
+        const destino = document.getElementById('destino').value;
+        const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
+        
+        if (!response.ok) {
+            throw new Error('Erro ao obter distância.');
         }
+
+        const data = await response.json();
+        
+        // Verifica se há resultados
+        if (data.status === 'OK') {
+            const distance = data.rows[0].elements[0].distance.value / 1000; // Obtém a distância em quilômetros
+            
+            let cost;
+            if (distance < 10) {
+                cost = 14.00; // Define o custo como R$ 14,00 se a distância for menor que 10 km
+            } else {
+                cost = distance * 1.4; // Calcula o custo baseado na distância (multiplica por 1.4 a cada km)
+            }
+            
+            document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distância e o custo
+        } else {
+            throw new Error('Nenhum resultado encontrado.');
+        }
+    } catch (error) {
+        console.error(error);
+        document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
+    }
+}
 
         // Função para enviar mensagem via WhatsApp
         function enviarWhatsapp() {
             const destino = document.getElementById('destino').value;
-            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor estimado: $${cost}`;
+            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}`;
             const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             window.open(link, '_blank');
         }
