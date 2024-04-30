@@ -45,6 +45,12 @@
                 if (!response.ok) {
                     throw new Error('Erro ao obter distância.');
                 }
+            } catch (error) {
+                console.error(error);
+            } finally {
+                destino = ''; // Limpa a variável destino
+            }
+        }
     </script>
 </body>
 </html>
