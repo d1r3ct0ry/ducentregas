@@ -47,27 +47,27 @@
                 }
             })
             .then(data => {
-    const distanciaText = data.rows[0].elements[0].distance.text;
-    const distanciaValue = data.rows[0].elements[0].distance.value;
-    const duracaoText = data.rows[0].elements[0].duration.text;
-    const duracaoValue = data.rows[0].elements[0].duration.value;
+                const distanciaText = data.rows[0].elements[0].distance.text;
+                const distanciaValue = data.rows[0].elements[0].distance.value;
+                const duracaoText = data.rows[0].elements[0].duration.text;
+                const duracaoValue = data.rows[0].elements[0].duration.value;
 
-    // Convertendo a distância de metros para quilômetros
-    const distanciaKm = distanciaValue / 1000;
+                // Convertendo a distância de metros para quilômetros
+                const distanciaKm = distanciaValue / 1000;
 
-    const custoEntrega = distanciaKm * 1.30;
+                const custoEntrega = distanciaKm * 1.30;
 
-    document.getElementById('resultado').innerText = `Distância: ${distanciaText}, Valor de entrega estimado de: R$${custoEntrega.toFixed(2)}`;
+                document.getElementById('resultado').innerText = `Distância: ${distanciaText}, Valor de entrega estimado de: R$${custoEntrega.toFixed(2)}`;
 
-    const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${destino}. Com o valor do frete estimado em R$${custoEntrega.toFixed(2)}. A distância é de ${distanciaText} e a duração aproximada é de ${duracaoText}`;
+                const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${destino}. Com o valor do frete estimado em R$${custoEntrega.toFixed(2)}. A distância é de ${distanciaText} e a duração aproximada é de ${duracaoText}`;
 
-    const linkWhatsapp = document.getElementById('whatsappLink');
-    linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
-})
-.catch(error => {
-    console.error('Erro:', error);
-    document.getElementById('resultado').innerText = 'Erro ao Montar a Mensagem.';
-});
+                const linkWhatsapp = document.getElementById('whatsappLink');
+                linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                document.getElementById('resultado').innerText = 'Erro ao obter distância.';
+            });
         }
     </script>
 </body>
