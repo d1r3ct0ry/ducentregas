@@ -1,36 +1,41 @@
 # Delivery Cost Calculator
 
-This project is a delivery cost calculator developed to estimate the shipping cost based on the distance between the origin and the destination.
+## Overview
+
+This project is a simple delivery cost calculator web application, designed to provide users with an estimation of the delivery cost based on the distance calculated from the provided address. Additionally, it includes functionality for users to initiate a conversation on WhatsApp to inquire about delivery.
 
 ## Features
 
-- Calculates the distance between the origin and the destination based on the provided address.
-- Estimates the delivery cost based on the calculated distance.
-- Provides a link to send a WhatsApp message with the estimated delivery cost.
-
-## Usage
-
-1. Enter the destination address in the input field.
-2. Click on the "Calculate Shipping" button.
-3. The estimated distance and delivery cost will be displayed.
-4. Use the provided WhatsApp link to send a message with the estimated delivery cost.
-
-## Installation
-
-No installation is required as this is a web-based application.
+- **Address Input**: Users can input the delivery address in a designated field.
+- **Cost Estimation**: Upon clicking the "Calculate Delivery Cost" button, the application estimates the delivery cost based on a predefined pricing model, considering the distance from the provided address.
+- **WhatsApp Integration**: After obtaining the estimated cost, users have the option to start a conversation on WhatsApp to inquire about the delivery details.
 
 ## Technologies Used
 
-- HTML
-- CSS
-- JavaScript
-- Flask
-- Geopy
+- **Frontend**:
+  - HTML5
+  - CSS3
+  - JavaScript
+  
+- **External APIs**:
+  - Google Maps JavaScript API
 
-## Credits
+## Usage
 
-This project was created by Fernando Nitsche
+1. **Address Input**: Enter the delivery address in the provided field.
+2. **Cost Calculation**: Click the "Calculate Delivery Cost" button to estimate the delivery cost.
+3. **WhatsApp Integration**: Optionally, click the "Send message via WhatsApp" button to start a conversation on WhatsApp to inquire about the delivery.
+
+## Future Enhancements
+
+- **Improved User Interface**: Enhance the user interface for better usability and aesthetics.
+- **Real-Time Cost Calculation**: Implement real-time cost calculation based on dynamic factors such as traffic and delivery demand.
+- **Enhanced Integration**: Explore additional communication channels for user inquiries, such as live chat support.
+
+## Feedback
+
+We welcome feedback and suggestions for improving the application. Please feel free to open an issue or submit a pull request on [GitHub](https://github.com/your-project-repo) if you have any ideas or improvements to share.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code according to the terms specified in the license agreement.
