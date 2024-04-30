@@ -38,4 +38,4 @@ We welcome feedback and suggestions for improving the application. Please feel f
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code according to the terms specified in the license agreement.
+This project is licensed under the [Apache License 2.0](LICENSE). For more information, see the [LICENSE](LICENSE) file in the root directory.
