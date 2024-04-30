@@ -37,7 +37,7 @@
 
             const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Sua chave de API do Google Maps
 
-            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(partida)}&destinations=${encodeURIComponent(destino)}&key=${apiKey}`;
+            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?&destinations=${encodeURIComponent(destino)}&origins=${encodeURIComponent(partida)}&units=metric&key=${apiKey}`;
 
             fetch(url)
             .then(response => {
