@@ -69,7 +69,7 @@ async function obterDistancia() {
         // Função para enviar mensagem via WhatsApp
         function enviarWhatsapp() {
             const destino = document.getElementById('destino').value;
-            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}`;
+            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor sugerido: ${cost}`;
             const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             window.open(link, '_blank');
         }
