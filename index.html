@@ -34,6 +34,8 @@
             const autocomplete = new google.maps.places.Autocomplete(input);
         }
 
+let cost; // Variável global para armazenar o custo
+
 async function obterDistancia() {
     try {
         const destino = document.getElementById('destino').value;
@@ -49,7 +51,6 @@ async function obterDistancia() {
         if (data.status === 'OK') {
             const distance = data.rows[0].elements[0].distance.value / 1000; // Obtém a distância em quilômetros
             
-            let cost;
             if (distance < 10) {
                 cost = 14.00; // Define o custo como R$ 14,00 se a distância for menor que 10 km
             } else {
@@ -66,13 +67,13 @@ async function obterDistancia() {
     }
 }
 
-        // Função para enviar mensagem via WhatsApp
-        function enviarWhatsapp() {
-            const destino = document.getElementById('destino').value;
-            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor sugerido: ${cost}`;
-            const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
-            window.open(link, '_blank');
-        }
+// Função para enviar mensagem via WhatsApp
+function enviarWhatsapp() {
+    const destino = document.getElementById('destino').value;
+    const mensagem = `Olá, gostaria de solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor sugerido: R$ ${cost.toFixed(2)}`;
+    const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
+    window.open(link, '_blank');
+}
 
         // Inicializa o autocomplete quando a página é carregada
         window.onload = function() {
