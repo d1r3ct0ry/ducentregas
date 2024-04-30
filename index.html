@@ -15,35 +15,31 @@
         <div class="container">
             <h2>Calcule seu Frete!</h2>
             <input type="text" id="destino" placeholder="Digite o endereço de envio - (Cidade, Estado, Bairro, Rua, Número)">
-                <button class="blue-button" onclick="obterDistancia()">
-                  <img src="assets/calculadora.png" class="calc-icon">
-                  Calcular Frete
-                </button>
+            <button class="blue-button" onclick="obterDistancia()">
+                <img src="assets/calculadora.png" class="calc-icon">
+                Calcular Frete
+            </button>
             <p id="resultado"></p>
             <!-- Botão para enviar mensagem para o WhatsApp -->
             <a id="whatsappLink" href="#" target="_blank">
                 <button class="green-button">
-                  <img src="assets/whatsapp.png" class="whatsapp-icon">
-                  Enviar mensagem via WhatsApp
+                    <img src="assets/whatsapp.png" class="whatsapp-icon">
+                    Enviar mensagem via WhatsApp
                 </button>
-              </a>
-              
+            </a>
         </div>
     </div>
 
     <script>
         function obterDistancia() {
             const destino = document.getElementById('destino').value;
-    
-            fetch('https://d1r3ct0ry.pythonanywhere.com/api/obter_coordenadas', {  // Atualiza a URL para incluir o host e a porta
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    endereco: destino
-                })
-            })
+            const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
+
+            const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Sua chave de API do Google Maps
+
+            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(partida)}&destinations=${encodeURIComponent(destino)}&key=${apiKey}`;
+
+            fetch(url)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -52,16 +48,14 @@
                 }
             })
             .then(data => {
-                const latitude = data.latitude;
-                const longitude = data.longitude;
-                const distanciaKm = data.distancia;
-    
+                const distanciaKm = data.rows[0].elements[0].distance.value / 1000; // Convertendo de metros para quilômetros
+
                 const custoEntrega = distanciaKm * 1.30;
-    
+
                 document.getElementById('resultado').innerText = `Distância: ${distanciaKm.toFixed(2)} km, Valor de entrega estimado de: R$${custoEntrega.toFixed(2)}`;
-    
+
                 const mensagem = `Olá, Gostaria de realizar o envio para o endereço: ${destino}. Com o valor do frete estimado em R$${custoEntrega.toFixed(2)}`;
-    
+
                 const linkWhatsapp = document.getElementById('whatsappLink');
                 linkWhatsapp.href = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
             })
