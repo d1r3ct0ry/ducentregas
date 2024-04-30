@@ -20,15 +20,13 @@
             </button>
             <p id="resultado"></p>
             <!-- Botão para enviar mensagem para o WhatsApp -->
-            <a id="whatsappLink" href="#" target="_blank">
-                <button class="green-button">
-                    <img src="assets/whatsapp.png" class="whatsapp-icon">
-                    Enviar mensagem via WhatsApp
-                </button>
-            </a>
+            <button class="green-button" onclick="enviarWhatsapp()">
+                <img src="assets/whatsapp.png" class="whatsapp-icon">
+                Enviar mensagem via WhatsApp
+            </button>
         </div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ&libraries=places&language=pt-BR"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_DA_API&libraries=places&language=pt-BR"></script>
     <script>
         // Função para inicializar o autocomplete
         function initAutocomplete() {
@@ -59,6 +57,14 @@
                 console.error(error);
                 document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
             }
+        }
+
+        // Função para enviar mensagem via WhatsApp
+        function enviarWhatsapp() {
+            const destino = document.getElementById('destino').value;
+            const mensagem = `Olá, solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor estimado: $${cost}`;
+            const link = `https://api.whatsapp.com/send?phone=SEU_NUMERO_DE_TELEFONE&text=${encodeURIComponent(mensagem)}`;
+            window.open(link, '_blank');
         }
 
         // Inicializa o autocomplete quando a página é carregada
