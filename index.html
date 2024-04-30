@@ -28,7 +28,14 @@
             </a>
         </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ&libraries=places&language=pt-BR"></script>
     <script>
+        // Função para inicializar o autocomplete
+        function initAutocomplete() {
+            const input = document.getElementById('destino');
+            const autocomplete = new google.maps.places.Autocomplete(input);
+        }
+
         async function obterDistancia() {
             try {
                 const destino = document.getElementById('destino').value;
@@ -53,6 +60,11 @@
                 document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
             }
         }
+
+        // Inicializa o autocomplete quando a página é carregada
+        window.onload = function() {
+            initAutocomplete();
+        };
     </script>
 </body>
 </html>
