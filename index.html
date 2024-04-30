@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Custo de Entrega</title>
@@ -30,17 +29,10 @@
         </div>
     </div>
     <script>
-        let destino = ''; // Definindo a variável destino globalmente
-
         async function obterDistancia() {
             try {
-                destino = document.getElementById('destino').value; // Atualizando o valor de destino globalmente
-                const partida = "-22.7504145,-43.2887379"; // Ponto de partida fixo
-                const apiKey = "AIzaSyBoKr_lrfasZ6AhN14JimI5-f9qVTaQHKQ"; // Substitua pelo seu próprio API key
-
-                const url = `https://maps.googleapis.com/maps/api/distancematrix/json?&destinations=${encodeURIComponent(destino)}&origins=${encodeURIComponent(partida)}&units=metric&key=${apiKey}`;
-                
-                const response = await fetch(url);
+                const destino = document.getElementById('destino').value;
+                const response = await fetch(`/distance?destinations=${encodeURIComponent(destino)}`);
                 
                 if (!response.ok) {
                     throw new Error('Erro ao obter distância.');
@@ -59,8 +51,6 @@
             } catch (error) {
                 console.error(error);
                 document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
-            } finally {
-                destino = ''; // Limpa a variável destino
             }
         }
     </script>
