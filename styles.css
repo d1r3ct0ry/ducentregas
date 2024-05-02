@@ -1,63 +1,77 @@
+/* Estilos para a barra de cabeÁalho */
+.header {
+    background-color: #ffffff; /* Cor de fundo branca */
+    height: 70px; /* Altura da barra de cabeÁalho */
+}
+
+/* Estilos para o corpo da p·gina */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('assets/background.jpeg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
-    background-position: left; /* Centraliza a imagem na tela */
-    background-repeat: no-repeat; /* Impede que a imagem de fundo se repita */
-    background-position: 100%;    
+    background-color: rgb(235, 235, 235); /* Cor de fundo */
     margin: 0;
     padding: 0;
 }
 
-
-
-.flex-container {
-    display: flex;
-    justify-content: center; /* Centraliza os elementos horizontalmente */
-    align-items: flex-start; /* Alinha os elementos ao topo */
-}
-
+/* Container principal */
 .container {
-    width: 80%; /* Redimensiona o container para ocupar 80% da largura da tela */
-    max-width: 600px;
+    width: 90%; /* Largura do container */
+    max-width: 600px; /* Largura m·xima */
+    height: 250px;
     background-color: #fff;
     border-radius: 8px;
+    text-align: center; /* Centralizar conte˙do */
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: auto; /* Alinha o cont√™iner no centro da tela */
+    margin: 40px auto 0; /* Margens */
 }
 
-
-h2 {
-    color: #4a4a4a;
+/* Texto principal */
+.princip {
+    max-width: 100%; /* Largura m·xima */
     margin-bottom: 20px;
-    text-align: center; /* Centraliza o texto */
+    margin-top: 25px;
+    font-size: 28px;
+    color: #333;
+    
 }
 
+/* Logo */
 .logo {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
+    margin-left: 40px
 }
 
+/* Novo estilo */
 .nova {
-    margin-left: 20px; /* Espa√ßamento entre o container e a imagem */
+    margin: 20px auto; /* Margens */
 }
 
+/* Estilo para texto */
+.text {
+    background-color: rgb(235, 235, 235); /* Cor de fundo */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Imagens dentro de .nova */
 .nova img {
-    max-width: 100%; /* Garante que a imagem n√£o ultrapasse a largura da sua div pai */
-    height: auto; /* Mant√©m a propor√ß√£o da imagem */
-    display: block; /* Remove espa√ßos em branco extras em torno da imagem */
-    border-radius: 8px; /* Adiciona borda arredondada √† imagem */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sutil sombra √† imagem */
+    max-width: 100%; /* Largura m·xima */
+    height: auto; /* Altura autom·tica */
+    display: block; /* Remover espaÁos em branco */
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
+/* Logo */
 .logo img {
-    width: 200px; /* Reduz um pouco o tamanho do logo */
+    width: 120px; /* Largura */
     max-width: 100%;
-    margin-top: 120px; /* Ajusta o espa√ßamento superior */
+    margin-top: 15px;
 }
 
+/* Estilo para campos de entrada de texto */
 input[type="text"] {
-    width: 100%; /* Garante que o campo de texto ocupe toda a largura dispon√≠vel */
+    width: calc(100% - 22px); /* Largura total */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -65,8 +79,9 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+/* Estilo para botıes */
 input[type="button"] {
-    width: 100%;
+    width: calc(100% - 22px); /* Largura total */
     padding: 10px 20px;
     background-color: #0056b3;
     color: #fff;
@@ -77,64 +92,96 @@ input[type="button"] {
     margin-bottom: 10px;
 }
 
+/* Efeito hover nos botıes */
 input[type="button"]:hover {
     background-color: #007bff;
 }
 
+/* Resultado */
 #resultado {
     margin-top: 20px;
     font-weight: bold;
-    text-align: center; /* Centraliza o texto */
+    text-align: center; /* Centralizar texto */
 }
 
 /* Estilos para telas menores */
 @media screen and (max-width: 600px) {
     .container {
-        width: 90%; /* Redimensiona o container para ocupar 90% da largura da tela em telas menores */
+        width: 90%; /* Largura em telas menores */
         margin: 20px auto;
     }
     .logo img {
-        width: 200px; /* Reduz um pouco mais o tamanho do logo em telas menores */
+        width: 150px; /* Tamanho do logo em telas menores */
     }
     body {
-        background-image: url('assets/background.jpeg');
         background-position: left;
-         /* Imagem de fundo para dispositivos m√≥veis */
     }
 }
 
+/* Bot„o verde */
 .green-button {
-    background-color: rgb(37, 211, 102);;
+    background-color: rgb(37, 211, 102);
     color: white;
     border: none;
     padding: 10px;
-    width: 100%;
+    width: 200px; /* Largura */
     cursor: pointer;
     border-radius: 5px;
+    margin: 10px auto; /* Margens */
     box-sizing: border-box;
-  }
+    position: fixed; /* Bot„o flutuante */
+    bottom: 30px; /* Dist‚ncia do fundo */
+    left: 50%; /* PosiÁ„o horizontal */
+    transform: translateX(-50%); /* Centralizar horizontalmente */
+    z-index: 9999; /* Z-index */
+    font-weight: bold; /* Negrito */
+}
 
-  .blue-button {
-    background-color: rgb(4, 26, 50);
+/* Bot„o laranja */
+.orange-button {
+    background-color: #ff6300;
     color: white;
     border: none;
     padding: 10px;
-    width: 100%;
+    width: calc(100% - 22px); /* Largura total */
     cursor: pointer;
     border-radius: 5px;
     box-sizing: border-box;
-  }
-  
-  .green-button:hover {
+    font-weight: bold; /* Negrito */
+}
+
+/* Efeito hover no bot„o verde */
+.green-button:hover {
     background-color: darkgreen;
-  }
+}
 
-  .whatsapp-icon {
-    width: 20px; /* Largura da imagem */
-    margin-right: 10px; /* Espa√ßamento √† direita da imagem */
-  }
+/* Õcone do WhatsApp */
+.whatsapp-icon {
+    width: 20px; /* Largura */
+    margin-right: 5px; /* EspaÁamento ‡ direita */
+}
 
-  .calc-icon {
-    width: 20px; /* Largura da imagem */
-    margin-right: 10px; /* Espa√ßamento √† direita da imagem */
-  }
+/* Estilos para .vel e .sub */
+
+/* Estilos para .vel e .sub */
+.vel {
+    font-size: 25px;
+    color: #333;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sub {
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.result {
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
