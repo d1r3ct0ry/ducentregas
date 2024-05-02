@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DUC Entregas</title>
@@ -17,16 +16,16 @@
 
     <div class="flex-container">
         <div class="container">
-            <h2 class="princip">Do feirão para sua casa <br /> em poucos cliques</h2>
-            <input type="text" id="destino" class="text" placeholder="Digite o endereço completo para entrega:">
+            <h2 class="princip">Do feirÃ£o para sua casa <br /> em poucos cliques</h2>
+            <input type="text" id="destino" class="text" placeholder="Digite o endereÃ§o completo para entrega:">
             <button class="orange-button" onclick="obterDistancia()">
                 Calcular Frete
             </button>
             <p id="resultado"></p>
         </div>
     </div>
-        <h2 class="vel">Mais Veloz, Mais Acessível, <br/> Mais Confiável! </h2>
-        <h2 class="sub">Experimente o novo padrão em entregas expressas <br/> e economize tempo e dinheiro.</h2>
+        <h2 class="vel">Mais Veloz, Mais AcessÃ­vel, <br/> Mais ConfiÃ¡vel! </h2>
+        <h2 class="sub">Experimente o novo padrÃ£o em entregas expressas <br/> e economize tempo e dinheiro.</h2>
     <button class="green-button" onclick="enviarWhatsapp()">
         <img src="assets/whatsapp.png" class="whatsapp-icon">
         Fale Conosco
@@ -46,7 +45,7 @@ async function obterDistancia() {
         const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
         
         if (!response.ok) {
-            throw new Error('Erro ao obter distância.');
+            throw new Error('Erro ao obter distÃ¢ncia.');
         }
 
         const data = await response.json();
@@ -60,19 +59,19 @@ async function obterDistancia() {
                 cost = distance * 1.4; 
             }
             
-            document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distÃ¢ncia e o custo
+            document.getElementById('resultado').innerText = `DistÃ¢ncia: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distÃƒÂ¢ncia e o custo
         } else {
             throw new Error('Nenhum resultado encontrado.');
         }
     } catch (error) {
         console.error(error);
-        document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
+        document.getElementById('resultado').innerText = 'Erro ao calcular a distÃ¢ncia.';
     }
 }
 
 function enviarWhatsapp() {
     const destino = document.getElementById('destino').value;
-    const mensagem = `Olá, gostaria de solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor sugerido: R$ ${cost.toFixed(2)}`;
+    const mensagem = `OlÃ¡, gostaria de solicitar o frete para o seguinte endereÃ§o: ${destino}, com o seguinte valor sugerido: R$ ${cost.toFixed(2)}`;
     const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
     window.open(link, '_blank');
 }
