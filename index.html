@@ -16,7 +16,7 @@
 
     <div class="flex-container">
         <div class="container">
-            <h2 class="princip">Do feirão para sua casa <br /> em poucos cliques</h2>
+            <h2 class="princip">Calculadora de Frete</h2>
             <input type="text" id="destino" class="text" placeholder="Digite o endereço completo para entrega:">
             <button class="orange-button" onclick="obterDistancia()">
                 Calcular Frete
@@ -53,8 +53,8 @@ async function obterDistancia() {
         if (data.status === 'OK') {
             const distance = data.rows[0].elements[0].distance.value / 1000; 
             
-            if (distance < 10) {
-                cost = 14.00; 
+            if (distance < 15) {
+                cost = 20.00; 
             } else {
                 cost = distance * 1.4; 
             }
