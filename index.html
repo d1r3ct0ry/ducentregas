@@ -58,6 +58,16 @@ async function obterDistancia() {
             } else {
                 cost = distance * 1.4; 
             }
+
+            if (distance <= 15) {
+              cost = 20.00; 
+            } else if (distance <= 30) {
+              cost = distance * 1.45; 
+            } else if (distance <= 50) {
+                cost = distance * 1.35; 
+            } else {
+                cost = distance * 1.25; 
+            }
             
             document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distÃ¢ncia e o custo
         } else {
@@ -65,7 +75,7 @@ async function obterDistancia() {
         }
     } catch (error) {
         console.error(error);
-        document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
+        document.getElementById('resultado').innerText = 'Erro ao calcular a dist�ncia.';
     }
 }
 
