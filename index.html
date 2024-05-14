@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="iso-8859-1"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Duc Entregas - Do FeirÃ£o para sua Casa</title>
+  <title>Duc Entregas - Do Feirão para sua Casa</title>
   <div class="col-auto">
     <!-- Logo -->
   </div>
@@ -59,8 +59,8 @@
         <ul>
        <!--     <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">Sobre</a></li>
-          <li><a href="services.html">ServiÃ§os</a></li>
-          <li><a href="pricing.html">PreÃ§os</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="pricing.html">Preços</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -93,33 +93,64 @@
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2 data-aos="fade-up">Mais Veloz, Mais AcessÃ­vel, Mais ConfiÃ¡vel!</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Descubra o novo padrÃ£o em entregas expressas com FeirÃ£o das Malhas: sua soluÃ§Ã£o Ã¡gil e confiÃ¡vel para receber produtos diretamente em sua porta. Um novo padrÃ£o em Entregas Expressas!</p>
-
-          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" id ="destino" class="form-control" placeholder="Digite o endereÃ§o completo para entrega">
-            <button type="submit" onclick="obterDistancia()" class="btn btn-warning">Calcular Frete</button>
-          </form>
+          <h2 data-aos="fade-up">Mais Veloz, Mais Acessível, Mais Confiável!</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Descubra o novo padrão em entregas expressas com Feirão das Malhas: sua solução ágil e confiável para receber produtos diretamente em sua porta. Um novo padrão em Entregas Expressas!</p>
           
+          <button type="button" class="btn btn-primary" onclick="calcularFrete()">Calcular Frete</button>
 
-          
+          <!-- Opções de Entrega -->
+          <div class="container" id="opcoes-entrega" style="display: none;" data-aos="fade-up">
+            <h5>Escolha o Tipo de Frete:</h5>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary" onclick="mostrarPeso('expressa')">Entrega Expressa</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary" onclick="mostrarPeso('dedicada')">Entrega Dedicada</button>
+                </div>
+            </div>
+          </div>
 
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+          <!-- Opções de Peso -->
+          <div class="container" id="opcoes-peso" style="display: none;">
+            <div class="row justify-content-between" style="margin-top: 20px;">
+              <h5>Peso:</h5>
+                <div class="col" style="margin-top: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="mostrarEndereco(1)">Até 1kg</button>
+                </div>
+                <div class="col" style="margin-top: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="mostrarEndereco(5)">Até 5kg</button>
+                </div>
+                <div class="col" style="margin-top: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="mostrarEndereco(10)">Até 10kg</button>
+                </div>
+            </div>
+          </div>
+
+          <!-- Digitar endereço e calcular frete -->
+          <div class="container" id="endereco-frete" style="display: none;margin-top: 20px" >
+            <h5>Destino:</h5>
+            <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+                <input type="text" id="destino" class="form-control" placeholder="Digite o endereço completo para entrega">
+                <button type="button" onclick="obterDistancia()" class="btn btn-warning">Calcular Frete</button>
+            </form>
+            <div class="row gy-4" data-aos="fade-up" data-aos-delay="400" id="resultado2" style="display: none;margin-top: 20px">
+              <div class="col-12 col-sm-6 col-lg-5 order-1 order-lg-2" data-aos="zoom-out" >
+                <p id="resultado" class="alert alert-success" style="margin-top: 0px;">Resultado do Valor do Frete</p>
+                <button type="button" class="btn btn-primary" onclick="enviarWhatsapp()">Solicitar Frete!</button>
+            </div>
+            </div>
 
             
           </div>
 
-          <div class="col-12 col-sm-6 col-lg-5 order-1 order-lg-2" data-aos="zoom-out">
-            <p id="resultado" class="alert alert-success" style="margin-top: 30px;">Resultado do Valor do Frete</p>
-            <button type="button" class="btn btn-primary" onclick="enviarWhatsapp()">Solicitar Frete!</button>
-          </div>
         </div>
-        <div class="col-lg-5 order-1 order-lg-2 hero-img d-none d-lg-block" data-aos="zoom-out">
-          <img src="assets/img/moto.png" class="img-fluid mb-3 mb-lg-0" alt="">
-      </div>      
+                    <div class="col-lg-5 order-1 order-lg-2 hero-img d-none d-lg-block" data-aos="zoom-out" style="display: none;">
+                <img src="assets/img/moto.png" class="img-fluid mb-3 mb-lg-0" alt="">
+            </div>
       </div>
     </div>
-  </section><!-- End Hero Section -->
+</section><!-- End Hero Section -->
 
   <main id="main">
 
@@ -133,17 +164,18 @@
             <div class="icon flex-shrink-0"><i class="fa-solid fa-cart-flatbed"></i></div>
             <div>
               <h4 class="title">Coleta</h4>
-              <p class="description">Oferecemos o serviÃ§o de coleta de suas mercadorias nos principais feirÃµes do Rio de Janeiro para garantir que seus produtos cheguem com seguranÃ§a ao destino.</p>
+              <p class="description">É um serviço que permite ao consumidor ou revendedor comprar em diversas lojas do feirão realizando um único envio. Ou seja, coletamos nas lojas escolhidas, juntamos as mercadorias em uma única embalagem e enviamos.
+              </p>
              <!--  <a href="service-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div>
           <!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="fa-solid fa-truck"></i></div>
+            <div class="icon flex-shrink-0"><i class="fa-solid fa-motorcycle"></i></div>
             <div>
-              <h4 class="title">Frota LogÃ­stica</h4>
-              <p class="description">Contamos com uma frota logÃ­stica para entregas expressas e dedicadas em todo o Brasil.</p>
+              <h4 class="title">Frota Logística (Motoboys Entregadores)</h4>
+              <p class="description">CNossos entregadores autônomos passam por uma seleção de várias etapas. Visando à prestação de um serviço de qualidade para que todas as encomendas sejam tratadas com cuidado e entregues à tempo.</p>
          <!--      <a href="service-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div><!-- End Service Item -->
@@ -151,8 +183,8 @@
           <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="icon flex-shrink-0"><i class="fa-solid fa-truck-ramp-box"></i></div>
             <div>
-              <h4 class="title">Entrega na sua Porta</h4>
-              <p class="description">Nossa equipe se dedica a levar sua encomenda diretamente atÃ© vocÃª, proporcionando conveniÃªncia e confiabilidade em cada entrega.</p>
+              <h4 class="title">Entrega na sua porta (Prazo de entrega)              </h4>
+              <p class="description">Nós entendemos que em alguns momentos a agilidade na entrega é crucial para o sucesso do seu negócio. É por isso que oferecemos diferentes opções de entrega, para que você possa escolher a que melhor atende às suas necessidades.</p>
             <!--   <a href="service-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>  -->
             </div>
           </div><!-- End Service Item -->
@@ -635,7 +667,7 @@
           <a href="index.html" class="logo d-flex align-items-center">
             <span>Duc Entregas</span>
           </a>
-          <p>Com a Duc Entregas, suas entregas sÃ£o feitas com eficiÃªncia e confianÃ§a. Coleta grÃ¡tis e frete para todo o Brasil. Confie na Duc Entregas para levar seu negÃ³cio adiante.
+          <p>Com a Duc Entregas, suas entregas são feitas com eficiência e confiança. Coleta grátis e frete para todo o Brasil. Confie na Duc Entregas para levar seu negócio adiante.
           </p>
           <div class="social-links d-flex mt-4">
           <!--  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>     -->
@@ -724,10 +756,11 @@ let cost;
 async function obterDistancia() {
 try {
     const destino = document.getElementById('destino').value;
+    document.getElementById('resultado2').style.display = 'block';
     const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
     
     if (!response.ok) {
-        throw new Error('Erro ao obter distÃƒÂ¢ncia.');
+        throw new Error('Erro ao obter distÃ¢ncia.');
     }
 
     const data = await response.json();
@@ -751,25 +784,47 @@ try {
             cost = distance * 1.25; 
         }
         
-        document.getElementById('resultado').innerText = `DistÃ¢ncia: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distÃƒ?Ã‚Â¢ncia e o custo
+        document.getElementById('resultado').innerText = `Distância: ${distance.toFixed(2)} km\nCusto de entrega: R$ ${cost.toFixed(2)}`; // Exibe a distÃ?Â¢ncia e o custo
     } else {
         throw new Error('Nenhum resultado encontrado.');
     }
 } catch (error) {
     console.error(error);
-    document.getElementById('resultado').innerText = 'Erro ao calcular a distÃ¢ncia.';
+    document.getElementById('resultado').innerText = 'Erro ao calcular a distância.';
 }
 }
 
 function enviarWhatsapp() {
 const destino = document.getElementById('destino').value;
-const mensagem = `OlÃ¡, gostaria de solicitar o frete para o seguinte endereÃ§o: ${destino}, com o seguinte valor sugerido: R$ ${cost.toFixed(2)}`;
+const mensagem = `Olá, gostaria de solicitar o frete para o seguinte endereço: ${destino}, com o seguinte valor sugerido: R$ ${cost.toFixed(2)}`;
 const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
 window.open(link, '_blank');
 }
     window.onload = function() {
         initAutocomplete();
     };
+
+    function mostrarPeso(tipoEntrega) {
+        document.getElementById('opcoes-peso').style.display = 'block';
+        // Se a entrega for expressa, você pode adicionar lógica aqui para personalizar a exibição dos botões de peso, se necessário
+    }
+
+    function mostrarEndereco(peso) {
+        document.getElementById('endereco-frete').style.display = 'block';
+    }
+
+    function calcularFrete() {
+    // Ocultar o texto principal
+    document.querySelector('#hero h2').style.display = 'none';
+    document.querySelector('#hero p').style.display = 'none';
+
+    // Ocultar o botão "Calcular Frete"
+    document.querySelector('#hero button').style.display = 'none';
+
+    // Exibir as opções de entrega
+    document.getElementById('opcoes-entrega').style.display = 'block';
+  }
+    
 </script>
 
 </body>
