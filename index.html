@@ -817,7 +817,14 @@ let peso = 0;
     }
 }
 
-
+function enviarWhatsapp() {
+    const destino = document.getElementById('destino').value;
+    const resultado = document.getElementById('resultado').innerText;
+    const pesoSelecionado = document.querySelector('.btn.active').innerText; // Obtém o peso selecionado
+    const mensagem = `Olá, gostaria de solicitar o frete para o seguinte endereço: ${destino}, com as seguintes informações:\n${resultado}\nPeso: ${pesoSelecionado}`;
+    const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
+    window.open(link, '_blank');
+}
 
 
     window.onload = function() {
