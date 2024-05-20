@@ -783,14 +783,14 @@
 
 			const pesoSelecionado = document.querySelector('.btn.active');
 			if (!pesoSelecionado) {
-			alert('Selecione um peso antes de calcular a distÃ¢ncia.');
+			alert('Selecione um peso antes de calcular a distância.');
 			return; // Saia da funÃ§Ã£o para evitar continuar com o processamento
 			}
 
 			const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
 			
 			if (!response.ok) {
-				throw new Error('Erro ao obter distÃ¢ncia.');
+				throw new Error('Erro ao obter distância.');
 			}
 
 			const data = await response.json();
@@ -801,7 +801,7 @@
 				let costExpressa;
 				let costDedicada;
 	
-			// CÃ¡lculo do custo para Entrega Expressa dependendo da distÃ¢ncia
+			// Cálculo do custo para Entrega Expressa dependendo da distância
 				if (distance < 15) {
 					costExpressa = 20.00 + taxa;
 				} else if (distance <= 30) {
@@ -812,7 +812,7 @@
 					costExpressa = distance * 1.25 + taxa;
 				}
 				
-					// CÃ¡lculo do custo para Entrega Dedicada dependendo da distÃ¢ncia
+					// Cálculo do custo para Entrega Dedicada dependendo da distância
 				if (distance >= 15 && distance <= 30) {
 					costDedicada = distance * 1.0;
 				} else if (distance <= 50) {
@@ -821,16 +821,16 @@
 					costDedicada = distance * 0.85;
 				}
 
-				document.getElementById('resultadoexp').innerText = `DistÃ¢ncia: ${distance.toFixed(2)} km\nValor Entrega Expressa: R$ ${costExpressa.toFixed(2)}`;
-				document.getElementById('resultadoded').innerText = `DistÃ¢ncia: ${distance.toFixed(2)} km\nValor Entrega Dedicada: R$ ${costDedicada.toFixed(2)}`;
+				document.getElementById('resultadoexp').innerText = `Distância: ${distance.toFixed(2)} km\nValor Entrega Expressa: R$ ${costExpressa.toFixed(2)}`;
+				document.getElementById('resultadoded').innerText = `Distância: ${distance.toFixed(2)} km\nValor Entrega Dedicada: R$ ${costDedicada.toFixed(2)}`;
 
 			} else {
 				throw new Error('Nenhum resultado encontrado.');
 			}
 		} catch (error) {
 			console.error(error);
-			document.getElementById('resultadoexp').innerText = 'Erro ao calcular a distÃ¢ncia.';
-			document.getElementById('resultadoded').innerText = 'Erro ao calcular a distÃ¢ncia.';
+			document.getElementById('resultadoexp').innerText = 'Erro ao calcular a distância.';
+			document.getElementById('resultadoded').innerText = 'Erro ao calcular a distância.';
 		}
 	}
 
