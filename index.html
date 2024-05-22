@@ -799,7 +799,6 @@
 		try {
 			const destino = document.getElementById('destino').value;
 
-			document.getElementById('resultado2').style.display = 'block';	
 			const pesoSelecionado = document.querySelector('.btn.active');
 			if (!pesoSelecionado) {
 			alert('Selecione um peso antes de calcular a distância.');
@@ -843,7 +842,12 @@
 				document.getElementById('resultadoexp').innerText = `Valor Entrega Expressa: R$ ${costExpressa.toFixed(2)}`;
 				document.getElementById('resultadoded').innerText = `Valor Entrega Dedicada: R$ ${costDedicada.toFixed(2)}`;
 				document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
-				document.getElementById('dist').style.display = 'block';		
+				if (pesoSelecionado) {
+                document.getElementById('dist').style.display = 'block';
+				document.getElementById('resultado2').style.display = 'block';	
+
+            }
+			
 			} else {
 				throw new Error('Nenhum resultado encontrado.');
 			}
