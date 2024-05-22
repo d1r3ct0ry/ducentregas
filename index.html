@@ -137,10 +137,15 @@
 				<div style="font-size: large;">Destino:</div>
 				<form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
 					<input type="text" id="destino" class="form-control" style="font-size: smaller;" placeholder="Para onde?" onclick="removerFocoBotao()">
-					<button type="button" onclick="obterDistancia()" id="botao-inicial" class="btn btn-warning">Calcular Frete</button>
 				</form>
-				<div class="form-check">
-					<button type="button" class="btn " id="dist" style="display:none; color: black;"></button>
+				<div class="row">
+					<div class="col">
+						<button type="button" onclick="obterDistancia()" id="botao-inicial" class="btn btn-warning btn-block">Calcular Frete</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn" id="dist" style="display:none; color: black;">Botão 2</button>
+					</div>
+				</div>				<div class="form-check">
 					<div class="row gy-3" data-aos="fade-up" data-aos-delay="400" id="resultado2" style="display: none; margin-top: 10px;">
 						<div >
 							<div class="container">
