@@ -830,13 +830,16 @@
 				}
 				
 					// Cálculo do custo para Entrega Dedicada dependendo da distância
-				if (distance >= 15 && distance <= 30) {
-					costDedicada = distance * 1.0 + taxa;
-				} else if (distance <= 50) {
-					costDedicada = distance * 0.9 + taxa;
+					if (distance < 20) {
+    					costDedicada = 20;
+					} else if (distance >= 20 && distance <= 30) {
+   					 costDedicada = distance * 1.0 + taxa;
+					} else if (distance <= 50) {
+   					 costDedicada = distance * 0.9 + taxa;
 				} else {
-					costDedicada = distance * 0.85 + taxa;
+ 					 costDedicada = distance * 0.85 + taxa;
 				}
+
 
 				document.getElementById('resultadoexp').innerText = `Expresso: R$ ${costExpressa.toFixed(2)}`;
 				document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;
