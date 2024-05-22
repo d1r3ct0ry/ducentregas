@@ -136,8 +136,8 @@
 			<div class="container" id="endereco-frete" style="margin-top: 20px" data-aos="fade-up">
 				<div style="font-size: large;">Destino:</div>
 				<form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-					<input type="text" id="destino" onclick="removerFocoBotao()" class="form-control" style="font-size: smaller;" placeholder="Para onde?">
-					<button type="button" onclick="obterDistancia()" id="botao-inicial" class="btn btn-warning">Calcular Frete</button>
+					<input type="text" id="destino" onclick="removerFocoBotao()" id="botao-inicial" class="form-control" style="font-size: smaller;" placeholder="Para onde?">
+					<button type="button" onclick="obterDistancia()"  class="btn btn-warning">Calcular Frete</button>
 				</form>
 				<div class="form-check">
 					<button type="button" class="btn " id="dist" style="display:none; color: black;"></button>
@@ -903,7 +903,7 @@
             }
         });
     }
-	
+
 	function removerFocoBotao() {
     // Remover o foco do botão quando o campo de entrada é clicado
     document.getElementById('botao-inicial').blur();
