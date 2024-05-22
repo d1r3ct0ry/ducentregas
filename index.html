@@ -109,7 +109,7 @@
 			<div class="container" id="opcoes-entrega" data-aos="fade-up">
 				<div class="row align-items-center">
 					<div class="col-auto">
-						<h4 class="mb-0">Calculadora de Frete</h4>
+						<h4 class="mb-0" style="font-weight: bold;">Calculadora de Frete</h4>
 					</div>
 					<div class="col-auto">
 					</div>
@@ -120,7 +120,7 @@
 			<!-- Opções de Peso -->
 			<div class="container" id="opcoes-peso" data-aos="fade-up">
 				<div class="row justify-content-between" style="margin-top: 20px;">
-				<h5>Peso:</h5>
+				<div style="font-size: large;">Selecione o Peso:</div>
 					<div class="col" style="margin-top: 10px;">
 						<button type="button" id="btn-peso-5" class="btn bg-white text-dark" onclick="selecionarPeso(5)">Até 5kg</button>
 					</div>
@@ -134,28 +134,27 @@
 			</div>
 			<!-- Digitar endereço e calcular frete -->
 			<div class="container" id="endereco-frete" style="margin-top: 20px" data-aos="fade-up">
-				<h5>Destino:</h5>
+				<div style="font-size: large;">Destino:</div>
 				<form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
 					<input type="text" id="destino" class="form-control" style="font-size: smaller;" placeholder="Para onde?">
 					<button type="button" onclick="obterDistancia()" id="botao-inicial" class="btn btn-warning">Calcular Frete</button>
 				</form>
 				<div class="form-check">
-					<button type="button" class="btn btn-primary" id="dist" style="display:none;"></button>
-					<div class="row gy-4" data-aos="fade-up" data-aos-delay="400" id="resultado2" style="display: none; margin-top: 20px;">
-					<div data-aos="zoom-out">
-						<div class="container" id="botoes-ocultos">
-						<button type="button" class="btn btn-primary" id="resultadoexp">
-							Resultado do Frete Expresso
-						</button>
-						<input class="form-check-input" type="checkbox" style="margin-top: 10px;" value="" id="checkboxExp">
-						<label class="form-check-label" for="checkboxExp">
-						</label>
-						<button type="button" class="btn btn-primary" style="margin-top: 20px;" id="resultadoded">
-							Resultado do Frete Dedicado
-						</button>
-						<input class="form-check-input" style="margin-top: 30px;" type="checkbox" value="" id="checkboxDed">
+					<button type="button" class="btn " id="dist" style="display:none; color: black;"></button>
+					<div class="row gy-3" data-aos="fade-up" data-aos-delay="400" id="resultado2" style="display: none; margin-top: 10px;">
+						<div data-aos="zoom-out">
+							<div class="container">
+								<button type="button" class="btn" style="color:white; font-size: large;" id="resultadoexp">
+=								</button>
+								<input class="form-check-input" type="checkbox" style="margin-top: 10px;" value="" id="checkboxExp">
+								<div style="margin-top: 5px; font-size: smaller;">(Prazo de Até 6 horas após a coleta)</div>
+								
+								<button type="button" class="btn" style="margin-top: 20px; color:white; font-size: large;" id="resultadoded">
+								</button>
+								<input class="form-check-input" style="margin-top: 30px;" type="checkbox" value="" id="checkboxDed">
+								<div style="margin-top: 5px; font-size: smaller">(Prazo de até 1 dia útil após a coleta)</div>
+							</div>
 						</div>
-					</div>
 					<button type="button" class="btn btn-success" style="margin-top: 20px;" onclick="enviarWhatsapp()">Solicitar Frete</button>
 					</div>
 				</div>
@@ -839,8 +838,8 @@
 					costDedicada = distance * 0.85;
 				}
 
-				document.getElementById('resultadoexp').innerText = `Valor Entrega Expressa: R$ ${costExpressa.toFixed(2)}`;
-				document.getElementById('resultadoded').innerText = `Valor Entrega Dedicada: R$ ${costDedicada.toFixed(2)}`;
+				document.getElementById('resultadoexp').innerText = `Expresso: R$ ${costExpressa.toFixed(2)}`;
+				document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;
 				document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
 				if (pesoSelecionado) {
                 document.getElementById('dist').style.display = 'block';
