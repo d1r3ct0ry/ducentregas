@@ -142,16 +142,16 @@
 				<div class="form-check">
 					<button type="button" class="btn " id="dist" style="display:none; color: black;"></button>
 					<div class="row gy-3" data-aos="fade-up" data-aos-delay="400" id="resultado2" style="display: none; margin-top: 10px;">
-						<div data-aos="zoom-out">
+						<div >
 							<div class="container">
 								<button type="button" class="btn" style="color:white; font-size: large;" id="resultadoexp">
 =								</button>
-								<input class="form-check-input" type="checkbox" style="margin-top: 10px;" value="" id="checkboxExp">
-								<div style="margin-top: 5px; font-size: smaller;">(Prazo de Até 6 horas após a coleta)</div>
+								<input class="form-check-input" onclick="uncheckOther(this)" type="checkbox" style="margin-top: 10px;" value="" id="checkboxExp">
+								<div style="margin-top: 5px; font-size: smaller;">(Prazo de até 6 horas após a coleta)</div>
 								
 								<button type="button" class="btn" style="margin-top: 20px; color:white; font-size: large;" id="resultadoded">
 								</button>
-								<input class="form-check-input" style="margin-top: 30px;" type="checkbox" value="" id="checkboxDed">
+								<input class="form-check-input" onclick="uncheckOther(this)" style="margin-top: 30px;" type="checkbox" value="" id="checkboxDed">
 								<div style="margin-top: 5px; font-size: smaller">(Prazo de até 1 dia útil após a coleta)</div>
 							</div>
 						</div>
@@ -160,7 +160,7 @@
 				</div>
 			</div>
 			</div>
-						<div class="col-lg-5 order-1 order-lg-2 hero-img d-none d-lg-block" data-aos="zoom-out" style="display: none;">
+						<div class="col-lg-5 order-1 order-lg-2 hero-img d-none d-lg-block" style="display: none;">
 					<img src="assets/img/moto.png" class="img-fluid mb-3 mb-lg-0" alt="">
 				</div>
 		</div>
@@ -891,6 +891,15 @@
 		const link = `https://api.whatsapp.com/send?phone=5521970970091&text=${encodeURIComponent(mensagem)}`;
 		window.open(link, '_blank');
 	}
+
+	function uncheckOther(checkbox) {
+        var checkboxes = document.querySelectorAll('.form-check-input');
+        checkboxes.forEach(function(cb) {
+            if (cb !== checkbox) {
+                cb.checked = false;
+            }
+        });
+    }
 
 	</script>
 
