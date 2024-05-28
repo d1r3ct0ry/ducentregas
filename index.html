@@ -152,7 +152,7 @@
 							<button type="button" class="btn" style="color:white; font-size: large;" id="resultadoexp">
 =								</button>
 							<input class="form-check-input" checked <!--onclick="uncheckOther(this)"  type="checkbox" style="margin-top: 10px;" value="" id="checkboxExp">
-							<div style="margin-top: 5px; font-size: smaller;">(Prazo de até 6 horas após a coleta)</div>
+							<!--<div style="margin-top: 5px; font-size: smaller;">(Prazo de até 6 horas após a coleta)</div>--->
 							
 							<!--<button type="button" class="btn" style="margin-top: 20px; color:white; font-size: large;" id="resultadoded">
 							</button>
@@ -837,7 +837,7 @@
 					costDedicada = distance * 0.85;
 				}
 
-				document.getElementById('resultadoexp').innerText = `Expresso: R$ ${costExpressa.toFixed(2)}`;
+				document.getElementById('resultadoexp').innerText = `Custo da Entrega: R$ ${costExpressa.toFixed(2)}`;
 		/*		document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;  */
 				document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
 				document.getElementById('dist').style.display = 'block';
