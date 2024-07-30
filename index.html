@@ -803,21 +803,19 @@
 				let costExpressa;
 				let costDedicada;
 
-				// CÃ¡lculo do custo para Entrega Expressa dependendo da distância
+				// Cálculo do custo para Entrega Expressa dependendo da distância
 				if (distance <= 10) {
 					costExpressa = 20.00;
 				} else if (distance <= 15) {
 					costExpressa = 25.00;
-				} else if (distance <= 25) {
+				} else if (distance <= 22) {
 					costExpressa = 30.00;
-				} else if (distance <= 30) {
+				} else if (distance <= 32) {
 					costExpressa = 35.00;
-				} else if (distance <= 40) {
+				} else if (distance <= 45) {
 					costExpressa = 40.00;
-				} else if (distance <= 50) {
-					costExpressa = 50.00;
 				} else if (distance <= 60) {
-					costExpressa = 60.00;
+					costExpressa = 50.00;
 				} else {
 					// Acima de 60 km não atendemos
 					costExpressa = 0;
@@ -825,8 +823,7 @@
 					alert('Não atendemos acima de 60km.');
 				}
 
-
-				// CÃ¡lculo do custo para Entrega Dedicada dependendo da distância
+				// Cálculo do custo para Entrega Dedicada dependendo da distância
 				if (distance < 20) {
 					costDedicada = 20;
 				} else if (distance >= 20 && distance <= 30) {
