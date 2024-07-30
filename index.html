@@ -787,82 +787,66 @@
 
 	let cost = 0;
 
-	async function obterDistancia() {
-    try {
-        const destino = document.getElementById('destino').value.trim();
-        const destinosNaoAtendidos = ["Guapimirim", "Magé", "Queimados", "Seropédica", "Itaboraí"];
-        const destinoNormalizado = destino.toLowerCase();
+		try {
+			const destino = document.getElementById('destino').value;
+			const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
 
-        // Verificação de destinos não atendidos pelo nome
-        if (destinosNaoAtendidos.map(d => d.toLowerCase()).includes(destinoNormalizado)) {
-            document.getElementById('resultadoexp').innerText = `Destino não atendido: ${destino}.`;
-            alert(`Destino não atendido: ${destino}.`);
-            return;
-        }
+			if (!response.ok) {
+				throw new Error('Erro ao obter distância.');
+			}
 
-        // Chamada para a API de distância
-        const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
+			const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error('Erro ao obter distância.');
-        }
+			if (data.status === 'OK') {
+				const distance = data.rows[0].elements[0].distance.value / 1000;
+				let costExpressa;
+				let costDedicada;
 
-        const data = await response.json();
+				// Cálculo do custo para Entrega Expressa dependendo da distância
+				if (distance <= 10) {
+					costExpressa = 20.00;
+				} else if (distance <= 15) {
+					costExpressa = 25.00;
+				} else if (distance <= 22) {
+					costExpressa = 30.00;
+				} else if (distance <= 32) {
+					costExpressa = 35.00;
+				} else if (distance <= 45) {
+					costExpressa = 40.00;
+				} else if (distance <= 60) {
+					costExpressa = 50.00;
+				} else {
+					// Acima de 60 km não atendemos
+					costExpressa = 0;
+					document.getElementById('resultadoexp').innerText = 'Não atendemos acima de 60km.';
+					alert('Não atendemos acima de 60km.');
+				}
 
-        if (data.status === 'OK') {
-            const distance = data.rows[0].elements[0].distance.value / 1000;
-            let costExpressa;
-            let costDedicada;
+				// Cálculo do custo para Entrega Dedicada dependendo da distância
+				if (distance < 20) {
+					costDedicada = 20;
+				} else if (distance >= 20 && distance <= 30) {
+					costDedicada = distance * 1.0;
+				} else if (distance <= 50) {
+					costDedicada = 30 + (distance - 30) * 0.9;
+				} else {
+					costDedicada = distance * 0.85;
+				}
 
-            // Verificação de distância superior a 60 km
-            if (distance > 60) {
-                document.getElementById('resultadoexp').innerText = 'Não atendemos acima de 60km.';
-                alert('Não atendemos acima de 60km.');
-                return;
-            }
+				document.getElementById('resultadoexp').innerText = `Custo da Entrega: R$ ${costExpressa.toFixed(2)}`;
+		/*		document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;  */
+				document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
+				document.getElementById('dist').style.display = 'block';
+				document.getElementById('resultado2').style.display = 'block';
 
-            // Cálculo do custo para Entrega Expressa dependendo da distância
-            if (distance <= 10) {
-                costExpressa = 20.00;
-            } else if (distance <= 15) {
-                costExpressa = 25.00;
-            } else if (distance <= 22) {
-                costExpressa = 30.00;
-            } else if (distance <= 32) {
-                costExpressa = 35.00;
-            } else if (distance <= 45) {
-                costExpressa = 40.00;
-            } else {
-                costExpressa = 50.00;
-            }
-
-            // Cálculo do custo para Entrega Dedicada dependendo da distância
-            if (distance < 20) {
-                costDedicada = 20;
-            } else if (distance >= 20 && distance <= 30) {
-                costDedicada = distance * 1.0;
-            } else if (distance <= 50) {
-                costDedicada = 30 + (distance - 30) * 0.9;
-            } else {
-                costDedicada = distance * 0.85;
-            }
-
-            // Exibição dos resultados
-            document.getElementById('resultadoexp').innerText = `Custo da Entrega: R$ ${costExpressa.toFixed(2)}`;
-            // document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;
-            document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
-            document.getElementById('dist').style.display = 'block';
-            document.getElementById('resultado2').style.display = 'block';
-
-        } else {
-            throw new Error('Nenhum resultado encontrado.');
-        }
-    } catch (error) {
-        console.error(error);
-        alert('Erro ao calcular a distância.');
-        // document.getElementById('resultadoded').innerText = 'Erro ao calcular a distância.';
-    }
-}
+			} else {
+				throw new Error('Nenhum resultado encontrado.');
+			}
+		} catch (error) {
+			console.error(error);
+			alert('Erro ao calcular a distância.');
+			/*  document.getElementById('resultadoded').innerText = 'Erro ao calcular a distância.'; */
+		}
 
 	}
 
