@@ -800,6 +800,28 @@
 
 			if (data.status === 'OK') {
 				const distance = data.rows[0].elements[0].distance.value / 1000;
+
+				// Lista de destinos proibidos
+				const destinosProibidos = [
+					'Guapimirim - RJ',
+					'Magé - RJ',
+					'Queimados - RJ',
+					'Seropédica - RJ',
+					'Itaboraí - RJ',
+					'Itaguaí - RJ'
+				];
+
+				// Função para verificar se o destino é proibido
+				function verificarDestinoProibido(destino) {
+					return destinosProibidos.some(d => destino.includes(d));
+				}
+
+				if (verificarDestinoProibido(destino)) {
+					document.getElementById('resultadoexp').innerText = 'Não atendemos para o destino informado.';
+					alert('Não atendemos para o destino informado.');
+					return; // Interrompe a função se o destino for proibido
+				}
+
 				let costExpressa;
 				let costDedicada;
 
@@ -821,6 +843,7 @@
 					costExpressa = 0;
 					document.getElementById('resultadoexp').innerText = 'Não atendemos acima de 60km.';
 					alert('Não atendemos acima de 60km.');
+					return; // Interrompe a função se a distância for maior que 60 km
 				}
 
 				// Cálculo do custo para Entrega Dedicada dependendo da distância
@@ -834,8 +857,8 @@
 					costDedicada = distance * 0.85;
 				}
 
-				document.getElementById('resultadoexp').innerText = `Custo da Entrega: R$ ${costExpressa.toFixed(2)}`;
-		/*		document.getElementById('resultadoded').innerText = `Dedicada: R$ ${costDedicada.toFixed(2)}`;  */
+				document.getElementById('resultadoexp').innerText = `Custo da Entrega Expressa: R$ ${costExpressa.toFixed(2)}`;
+				document.getElementById('resultadoded').innerText = `Custo da Entrega Dedicada: R$ ${costDedicada.toFixed(2)}`;
 				document.getElementById('dist').innerText = `Distância: ${distance.toFixed(2)} km\n`;
 				document.getElementById('dist').style.display = 'block';
 				document.getElementById('resultado2').style.display = 'block';
@@ -846,9 +869,8 @@
 		} catch (error) {
 			console.error(error);
 			alert('Erro ao calcular a distância.');
-			/*  document.getElementById('resultadoded').innerText = 'Erro ao calcular a distância.'; */
+			document.getElementById('resultadoexp').innerText = 'Erro ao calcular a distância.';
 		}
-
 	}
 
 	window.onload = function() {
