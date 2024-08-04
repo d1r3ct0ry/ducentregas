@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-<meta charset="iso-8859-1">
+<meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <title>Duc Entregas - Do Feirão para sua Casa</title>
@@ -787,6 +787,7 @@
 
 	let cost = 0;
 
+	async function obterDistancia() {
 		try {
 			const destino = document.getElementById('destino').value;
 			const response = await fetch('https://d1r3ct0ry.pythonanywhere.com/distance?destinations=' + encodeURIComponent(destino));
