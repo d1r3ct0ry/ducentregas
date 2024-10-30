@@ -120,37 +120,62 @@
     </div>
     
     <!-- Segunda tela: resultado do frete -->
-    <div id="segundaTela" class="hidden text-center">
-        <p style="margin-bottom: 20px;">O valor do seu frete é: <strong id="valorFrete"></strong></p>
-        <p style="margin-bottom: 20px;"><strong>Endereço:</strong> <span id="endereco"></span></p>
-        
-        <div class="form-group mb-2 d-flex justify-content-center">
-            <input type="text" class="form-control mr-2" id="numero" placeholder="Número" required style="width: 100px; text-align: center;">
-            <input type="text" class="form-control" id="complemento" placeholder="Complemento" style="width: 200px;">
+        <div id="segundaTela" class="hidden text-center" style="padding: 20px;">
+            <p style="margin-bottom: 20px;">O valor do seu frete é: <strong id="valorFrete"></strong></p>
+            <p style="margin-bottom: 20px;"><strong>Endereço:</strong> <span id="endereco"></span></p>
+            
+            <div class="form-group mb-2 d-flex justify-content-center">
+                <input type="text" class="form-control mr-2" id="numero" placeholder="Número" required style="width: 100px; text-align: center;">
+                <input type="text" class="form-control" id="complemento" placeholder="Complemento" style="width: 200px;">
+            </div>
+            
+            <div class="form-check mb-2 d-flex align-items-center" style="margin-left: 120px;">
+                <input type="checkbox" class="form-check-input" id="semComplemento" onclick="toggleComplemento()" style="margin-top: 0;">
+                <label class="form-check-label" for="semComplemento" style="font-size: 0.9em; margin-left: 5px; font-weight: bold;">Não tenho</label>
+            </div>
+            
+            <div class="form-group mb-2">
+                <input type="text" class="form-control" id="pontoReferencia" placeholder="Ponto de Referência" style="width: 300px; margin: 0 auto;">
+            </div>
+            
+            <h5>Selecione a modalidade do frete:</h5>
+            <div class="d-flex justify-content-center mb-3">
+                <div class="bubble-option">
+                    <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete13_18" value="13-18h" required>
+                    <label class="bubble" for="frete13_18">Frete de 13h às 18h</label>
+                </div>
+                <div class="bubble-option">
+                    <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete18_22" value="18-22h" required>
+                    <label class="bubble" for="frete18_22">Frete de 18h às 22h</label>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-block mb-2" style="height: 40px; width: 300px; margin: 0 auto; font-weight: bold;" onclick="validarEntrega()">Solicitar Entrega</button>
+            <button class="btn btn-link" onclick="voltarParaPrimeiraTela()">Voltar</button>
         </div>
         
-        <div class="form-check mb-2 d-flex align-items-center" style="margin-left: 120px;">
-            <input type="checkbox" class="form-check-input" id="semComplemento" onclick="toggleComplemento()" style="margin-top: 0;">
-            <label class="form-check-label" for="semComplemento" style="font-size: 0.9em; margin-left: 5px; font-weight: bold;">Não tenho</label>
-        </div>
+        <style>
+            .bubble-option {
+                display: inline-block;
+                cursor: pointer;
+                margin: 0 10px;
+            }
         
-        <div class="form-group mb-2">
-            <input type="text" class="form-control" id="pontoReferencia" placeholder="Ponto de Referência" style="width: 300px; margin: 0 auto;">
-        </div>
+            .bubble {
+                padding: 10px 20px;
+                border: 2px solid rgb(255, 130, 53);
+                border-radius: 20px;
+                background-color: white;
+                color: rgb(255, 130, 53);
+                transition: background-color 0.3s, color 0.3s;
+            }
         
-        <h5>Selecione a modalidade do frete:</h5>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete13_18" value="13-18h" required>
-            <label class="form-check-label" for="frete13_18">Frete de 13h às 18h</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete18_22" value="18-22h" required>
-            <label class="form-check-label" for="frete18_22">Frete de 18h às 22h</label>
-        </div>
-        
-        <button class="btn btn-primary btn-block mb-2" style="height: 40px; width: 300px; margin: 0 auto; font-weight: bold;" onclick="validarEntrega()">Solicitar Entrega</button>
-        <button class="btn btn-link" onclick="voltarParaPrimeiraTela()">Voltar</button>
-    </div>
+            .bubble:hover {
+                background-color: rgb(255, 130, 53);
+                color: white;
+            }
+        </style>
+
 
     
     <div id="terceiraTela" class="hidden text-left">
