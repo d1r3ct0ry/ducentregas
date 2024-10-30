@@ -138,9 +138,20 @@
             <input type="text" class="form-control" id="pontoReferencia" placeholder="Ponto de Referência" style="width: 300px; margin: 0 auto;">
         </div>
         
+        <h5>Selecione a modalidade do frete:</h5>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete13_18" value="13-18h" required>
+            <label class="form-check-label" for="frete13_18">Frete de 13h às 18h</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="modalidadeFrete" id="frete18_22" value="18-22h" required>
+            <label class="form-check-label" for="frete18_22">Frete de 18h às 22h</label>
+        </div>
+        
         <button class="btn btn-primary btn-block mb-2" style="height: 40px; width: 300px; margin: 0 auto; font-weight: bold;" onclick="validarEntrega()">Solicitar Entrega</button>
         <button class="btn btn-link" onclick="voltarParaPrimeiraTela()">Voltar</button>
     </div>
+
     
     <div id="terceiraTela" class="hidden text-left">
         <div class="terceira-tela-header" style="text-align: center; margin-bottom: 20px;">Resumo do Pedido!</div>
@@ -220,19 +231,26 @@
             const numero = document.getElementById("numero").value;
             const complemento = document.getElementById("complemento").value || "N/A";
             const pontoReferencia = document.getElementById("pontoReferencia").value || "N/A";
-
+        
             // Validação dos campos
             if (!numero) {
                 alert("Por favor, insira o número.");
                 return;
             }
-
+        
+            // Captura a modalidade de frete selecionada
+            const modalidadeFrete = document.querySelector('input[name="modalidadeFrete"]:checked');
+            if (!modalidadeFrete) {
+                alert("Por favor, selecione uma modalidade de frete.");
+                return;
+            }
+        
             // Passando as informações para a terceira tela
             document.getElementById("enderecoTerceiraTela").textContent = document.getElementById("endereco").textContent;
             document.getElementById("numeroTerceiraTela").textContent = numero;
             document.getElementById("complementoTerceiraTela").textContent = complemento;
             document.getElementById("pontoReferenciaTerceiraTela").textContent = pontoReferencia;
-
+        
             // Exibindo a terceira tela
             document.getElementById("segundaTela").classList.add("hidden");
             document.getElementById("terceiraTela").classList.remove("hidden");
