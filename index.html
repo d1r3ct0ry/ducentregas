@@ -186,18 +186,29 @@
     </div>
 
     <script>
-        const tabelaFrete = [
-            { local: "Belford Roxo 1", cepInicio: "26100-001", cepFim: "26111-999", valor: "R$ 30,00" },
-            { local: "Belford Roxo 2", cepInicio: "26112-000", cepFim: "26164-999", valor: "R$ 35,00" },
-            { local: "Belford Roxo 3", cepInicio: "26165-000", cepFim: "26199-999", valor: "R$ 30,00" },
-            { local: "São João de Meriti", cepInicio: "25500-001", cepFim: "25599-999", valor: "R$ 30,00" },
-            { local: "Duque de Caxias", cepInicio: "25000-001", cepFim: "25099-999", valor: "R$ 35,00" },
-            { local: "Nilópolis", cepInicio: "26500-001", cepFim: "26599-999", valor: "R$ 40,00" },
-            { local: "Nova Iguaçu", cepInicio: "26200-001", cepFim: "26299-999", valor: "R$ 40,00" },
-            { local: "Mesquita", cepInicio: "26000-001", cepFim: "26099-999", valor: "R$ 35,00" },
-            { local: "Itaguaí", cepInicio: "23800-001", cepFim: "23899-999", valor: "R$ 50,00" },
-            { local: "São João de Meriti (vila união)", cepInicio: "25510-001", cepFim: "25599-999", valor: "R$ 30,00" }
-        ];
+    const tabelaFrete = [
+        { local: "Belford Roxo 1", cepInicio: "26100-001", cepFim: "26111-999", valor: "R$ 30,00" },
+        { local: "Belford Roxo 2", cepInicio: "26112-000", cepFim: "26164-999", valor: "R$ 35,00" },
+        { local: "Belford Roxo 3", cepInicio: "26165-000", cepFim: "26199-999", valor: "R$ 30,00" },
+        { local: "São João de Meriti", cepInicio: "25500-001", cepFim: "25599-999", valor: "R$ 30,00" },
+        { local: "Nilópolis", cepInicio: "26500-001", cepFim: "26549-999", valor: "R$ 35,00" },
+        { local: "Mesquita", cepInicio: "26550-001", cepFim: "26599-999", valor: "R$ 35,00" },
+        { local: "Nova Iguaçu 1", cepInicio: "26000-001", cepFim: "26289-999", valor: "R$ 40,00" },
+        { local: "Nova Iguaçu 2", cepInicio: "26290-000", cepFim: "26299-999", valor: "R$ 45,00" },
+        { local: "Duque de Caxias 1", cepInicio: "25000-000", cepFim: "25099-999", valor: "R$ 25,00" },
+        { local: "Duque de Caxias 2", cepInicio: "25200-000", cepFim: "25299-999", valor: "R$ 30,00" },
+        { local: "Rio de Janeiro 1", cepInicio: "20000-001", cepFim: "20999-999", valor: "R$ 35,00" },
+        { local: "Rio de Janeiro 2", cepInicio: "21000-000", cepFim: "21309-999", valor: "R$ 30,00" },
+        { local: "Rio de Janeiro 3", cepInicio: "21310-000", cepFim: "21999-999", valor: "R$ 35,00" },
+        { local: "Rio de Janeiro 4", cepInicio: "22000-000", cepFim: "22783-199", valor: "R$ 40,00" },
+        { local: "Rio de Janeiro 5", cepInicio: "22783-200", cepFim: "22999-999", valor: "R$ 50,00" },
+        { local: "Rio de Janeiro 6", cepInicio: "23000-000", cepFim: "23019-999", valor: "R$ 40,00" },
+        { local: "Rio de Janeiro 7", cepInicio: "23020-000", cepFim: "23039-999", valor: "R$ 50,00" },
+        { local: "Rio de Janeiro 8", cepInicio: "23040-000", cepFim: "23499-999", valor: "R$ 40,00" },
+        { local: "Rio de Janeiro 9", cepInicio: "23500-000", cepFim: "23599-999", valor: "R$ 50,00" },
+        { local: "Niterói", cepInicio: "24000-001", cepFim: "24399-999", valor: "R$ 40,00" },
+        { local: "São Gonçalo", cepInicio: "24400-001", cepFim: "24799-999", valor: "R$ 40,00" }
+    ];
 
         function formatarCep(input) {
             const valor = input.value.replace(/\D/g, '');
